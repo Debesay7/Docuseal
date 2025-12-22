@@ -1,8 +1,16 @@
+FROM docuseal/docuseal:1.7.2
+
+WORKDIR /app
+
+# Railway provides PORT automatically
+EXPOSE 3000       
+
 [build]
 builder = "DOCKERFILE"
 dockerfilePath = "Dockerfile"
 
 [deploy]
-startCommand = "bin/rails server -b 0.0.0.0 -p $PORT"
+# Wrap in bash -c to expand $PORT properly
+startCommand = "/bin/bash -c 'bin/rails server -b 0.0.0.0 -p $PORT'"
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 10
