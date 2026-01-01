@@ -1,6 +1,5 @@
+# Use the official DocuSeal image directly
 FROM docuseal/docuseal:1.7.2
 
-WORKDIR /app
-
-# Railway provides PORT automatically
-EXPOSE 3000
+# Railway compatibility - no custom commands needed
+# The DocuSeal image handles everything automatically
