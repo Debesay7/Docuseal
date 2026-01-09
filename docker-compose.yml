@@ -1,6 +1,6 @@
 services:
   docuseal:
-    image: docuseal/docuseal:1.1.0
+    image: docuseal/docuseal:1.7.2
     container_name: docuseal
     restart: unless-stopped
     environment:
@@ -8,13 +8,21 @@ services:
       # Email
       SMTP_ADDRESS: ${SMTP_ADDRESS}
       SMTP_PORT: ${SMTP_PORT}
-      SMTP_USER_NAME: ${SMTP_USER_NAME}
+      SMTP_USERNAME: ${SMTP_USERNAME}
       SMTP_PASSWORD: ${SMTP_PASSWORD}
       SMTP_FROM: ${SMTP_FROM}
       SMTP_DOMAIN: ${SMTP_DOMAIN}
       SMTP_AUTHENTICATION: ${SMTP_AUTHENTICATION}
       SMTP_ENABLE_STARTTLS_AUTO: ${SMTP_ENABLE_STARTTLS_AUTO}
       SMTP_OPENSSL_VERIFY_MODE: ${SMTP_OPENSSL_VERIFY_MODE}
+      # Alternative MAILER variables for compatibility
+      MAILER_SMTP_ADDRESS: ${MAILER_SMTP_ADDRESS}
+      MAILER_SMTP_PORT: ${MAILER_SMTP_PORT}
+      MAILER_SMTP_USER_NAME: ${MAILER_SMTP_USER_NAME}
+      MAILER_SMTP_PASSWORD: ${MAILER_SMTP_PASSWORD}
+      MAILER_SMTP_AUTHENTICATION: ${MAILER_SMTP_AUTHENTICATION}
+      MAILER_SMTP_ENABLE_STARTTLS_AUTO: ${MAILER_SMTP_ENABLE_STARTTLS_AUTO}
+      MAILER_SMTP_DOMAIN: ${MAILER_SMTP_DOMAIN}
     ports:
       - "3001:3000"
     volumes:
